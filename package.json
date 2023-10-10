@@ -1,0 +1,27 @@
+{
+  "name": "wolf",
+  "version": "0.1.0",
+  "description": "��#\u0000 \u0000w\u0000o\u0000l\u0000f\u0000a\u0000n\u0000d\u0000e\u0000g\u0000g\u0000s\u0000\r\u0000 \u0000",
+  "main": "newVersion.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sos7ya/wolfandeggs.git"
+  },
+  "author": "sos7ik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sos7ya/wolfandeggs/issues"
+  },
+  "homepage": "https://github.com/Sos7ya/wolfandeggs#readme",
+  "devDependencies": {
+    "@babel/core": "^7.22.11",
+    "@babel/preset-env": "^7.22.14",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify": "^3.0.2"
+  }
+}
