@@ -13,7 +13,7 @@ var sessionID
 var gameId = uid();
 
 var position = 'left';
-var game_version = 'v_0.1.9';
+var game_version = 'v_0.1.9s';
 var physicsConfig = {
     default: 'matter',
     matter : {
@@ -23,7 +23,7 @@ var physicsConfig = {
 
 window.onload = function(){
     var config = {
-        type: Phaser.CANVAS,
+        type: Phaser.WEBGL,
         width: 1920,
         height: 1080,
         backgroundColor: '#bfcc00',
