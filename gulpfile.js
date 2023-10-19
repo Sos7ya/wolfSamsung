@@ -17,4 +17,16 @@ const buildBundle = ()=> {
    
 }
 
-exports.default = series(buildBundle)
+const makeLibs = ()=>{
+    return src([
+        'libs/*.js'
+    ])
+        .pipe(concat('libs.js'))
+        .pipe(babel({
+            presets: ["@babel/preset-env"]
+        }))
+        .pipe(uglify())
+        .pipe(dest("."))
+}
+
+exports.default = series(buildBundle, makeLibs);

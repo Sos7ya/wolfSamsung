@@ -4,6 +4,17 @@ class GameOver extends Phaser.Scene{
     }
 
     create(){
+
+        let gameOver = {
+            action: 'gameOver',
+            allGameSessionId : sessionID,
+            gameSessionId : gameId,
+            score : gameState.score,
+            timeStamp : Date.now()
+        }
+
+        window?.parent.postMessage(gameOver, '*');
+
         gameState.isOver = true
         gameState.onMenu = false
         gameState.onGame = false
@@ -114,7 +125,7 @@ class GameOver extends Phaser.Scene{
         gameState.score = 0
         gameState.lives = 3
 
-        startGame.gameSessionId = uid();
+        startGame.gameSessionId = generateUUID();
         startGame.allGameSessionId = sessionID;
         window?.parent.postMessage(startGame, '*');
         console.log(`started game w: allGame - ${startGame.allGameSessionId} and gameId - ${startGame.gameSessionId}`);
@@ -123,13 +134,15 @@ class GameOver extends Phaser.Scene{
         this.scene.stop()
     }
     exit(){
-        let closeGameSession = {
-            action: 'closeGameSession',
-            allGameSessionId : sessionID,
-            timeStamp : Date.now()
+        if(gameState.isOver){
+            let closeGameSession = {
+                action: 'closeGameSession',
+                allGameSessionId : sessionID,
+                timeStamp : Date.now()
+            }
+    
+            window?.parent.postMessage(closeGameSession, '*');
         }
-
-        window?.parent.postMessage(closeGameSession, '*');
     }
 }
 

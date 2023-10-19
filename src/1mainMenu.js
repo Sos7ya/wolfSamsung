@@ -90,7 +90,7 @@ class MainMenu extends Phaser.Scene{
 
     startGame(){
         gameState.onMenu = false
-        startGame.gameSessionId = uid();
+        startGame.gameSessionId = generateUUID();
         startGame.allGameSessionId = sessionID;
         window?.parent.postMessage(startGame, '*');
         console.log(`started game w: allGame - ${startGame.allGameSessionId} and gameId - ${startGame.gameSessionId}`);
@@ -99,14 +99,16 @@ class MainMenu extends Phaser.Scene{
 
     }
     exit(){
-        let closeGameSession = {
-            action: 'closeGameSession',
-            allGameSessionId : sessionID,
-            timeStamp : Date.now()
+        if(gameState.onMenu){
+            let closeGameSession = {
+                action: 'closeGameSession',
+                allGameSessionId : sessionID,
+                timeStamp : Date.now()
+            }
+    
+            window?.parent.postMessage(closeGameSession, '*');
         }
-
-        window?.parent.postMessage(closeGameSession, '*');
     }
 }
 
-var mainmenu = new MainMenu()
+var mainmenu = new MainMenu();

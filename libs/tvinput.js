@@ -1,7 +1,4 @@
-//console.log = function(message) {
-  //document.getElementById('divlog').innerHTML += message + ' ';
-//};
-//console.warn = console.log;
+
 window.addEventListener('load', function() {
 
     SpatialNavigation.init();
@@ -26,12 +23,11 @@ window.addEventListener('load', function() {
           gameOver.gameToggle()
           scenepause.gameToggle()
         }
-        //document.getElementById('divlog').innerHTML += evt.detail.direction + '\n';
-        switch(evt.detail.direction){
+        switch(evt.detail?.direction){
           case 'up':
             mainmenu.selectorUp()
             scenepause.selectorUp()
-            // scenePause.selectorUp()
+            
             gameOver.selectorUp()
             playgame.handMoveUp()
             break;
@@ -39,7 +35,7 @@ window.addEventListener('load', function() {
             mainmenu.selectorDown()
             scenepause.selectorDown()
             gameOver.selectorDown()
-            // scenePause.selectorDown()
+            
             playgame.handMoveDown()
             break;
             case 'left':

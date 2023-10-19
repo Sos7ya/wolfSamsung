@@ -10,10 +10,10 @@ var gameState = {
 }
 
 var sessionID
-var gameId = uid();
+var gameId = generateUUID();
 
 var position = 'left';
-var game_version = 'v_0.1.9s';
+var game_version = 'v 0.2.6s';
 var physicsConfig = {
     default: 'matter',
     matter : {
@@ -23,7 +23,7 @@ var physicsConfig = {
 
 window.onload = function(){
     var config = {
-        type: Phaser.WEBGL,
+        type: Phaser.CANVAS,
         width: 1920,
         height: 1080,
         backgroundColor: '#bfcc00',
@@ -32,11 +32,15 @@ window.onload = function(){
         physics: physicsConfig,
         scale: {
             mode: Phaser.Scale.FIT
-        }    
+        },
+        audio:{
+            disableWebAudio: true,
+            noAudio: false
+        } 
     }
 
 
-    sessionID = uid();
+    sessionID = generateUUID();
     var startGameSession = {
         action: 'startGameSession',
         allGameSessionId: sessionID,

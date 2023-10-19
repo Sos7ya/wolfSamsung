@@ -4,6 +4,13 @@ class Preloader extends Phaser.Scene{
     }
 
     preload(){
+        try{
+            let startDownloading = {
+                action: 'startDownloading',
+                allGameSessionId: sessionID,
+                timeStamp: Date.now()
+            }
+            window?.parent.postMessage(startDownloading, '*');
 
         this.loadText = this.add.text(game.config.width/2, game.config.height/2, 'Loading...',{fontFamily: 'DigitalNumbers'}).setAlpha(0)
 
@@ -102,8 +109,33 @@ class Preloader extends Phaser.Scene{
 
         this.load.json('shapes', 'assets/tryingPE.json');
     }
+    catch(er){
+        let startDownloadingError = {
+            action: 'startDownloadingError',
+            allGameSessionId: sessionID,
+            timeStamp: Date.now()
+        }
+        window?.parent.postMessage(startDownloadingError, '*');
+    }
+    }
 
     create(){
+        try{
+            let finishDownload = {
+                action: 'finishDownload',
+                allGameSessionId: sessionID,
+                timeStamp: Date.now()
+            }
+            window?.parent.postMessage(finishDownload, '*')
+        }
+        catch(er){
+            let downloadError = {
+                action: 'downloadError',
+                allGameSessionId: sessionID,
+                timeStamp: Date.now()
+            }
+            window?.parent.postMessage(downloadError, '*')
+        }
         this.scene.start('mainmenu')
     }
 }
