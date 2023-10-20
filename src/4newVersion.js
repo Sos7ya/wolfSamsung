@@ -46,7 +46,6 @@ window.onload = function(){
         allGameSessionId: sessionID,
         timeStamp: Date.now()
     }
-    console.log(`session ${startGameSession.allGameSessionId} started!`);
     window?.parent.postMessage(startGameSession, '*');
 
 game = new Phaser.Game(config);
@@ -264,11 +263,9 @@ class PlayGame extends Phaser.Scene{
             // this.wolf.x = game.config.width/2-150
             position = 'left'
             if(this.wolf.texture.key === 'wolf_3'){
-                console.log(this.wolf)
                 this.wolf.setTexture('wolf_1')
             }
             if(this.wolf.texture.key === 'wolf_4'){
-                console.log(this.wolf)
                 this.wolf.setTexture('wolf_2')
             }
         }
@@ -306,11 +303,9 @@ class PlayGame extends Phaser.Scene{
             // this.wolf.x = game.config.width/2+120
             position = 'right'
             if(this.wolf.texture.key === 'wolf_1'){
-                console.log(this.wolf)
                 this.wolf.setTexture('wolf_3')
             }
             if(this.wolf.texture.key === 'wolf_2'){
-                console.log(this.wolf)
                 this.wolf.setTexture('wolf_4')
             }
         }
@@ -320,11 +315,9 @@ class PlayGame extends Phaser.Scene{
         if(gameState.onGame == true){
             this.hand.y = game.config.height/2 + 350
             if(position === 'left'){
-                console.log(this.wolf)
                 this.wolf.setTexture('wolf_2')
             }
             if(position === 'right'){
-                console.log(this.wolf)
                 this.wolf.setTexture('wolf_4')
             }
         }
@@ -334,12 +327,10 @@ class PlayGame extends Phaser.Scene{
         if(gameState.onGame == true){
             this.hand.y = game.config.height/2.3+170
             if(position === 'left'){
-                console.log(this.wolf)
                 this.wolf.setTexture('wolf_1')
                 // this.wolf.x = game.config.width/2-150
             }
             if(position === 'right'){
-                console.log(this.wolf)
                 this.wolf.setTexture('wolf_3')
             }
         }
@@ -374,7 +365,6 @@ class PlayGame extends Phaser.Scene{
         
         if(gameState.lives == 0){
             this.mainTheme.stop()
-            console.log('game over')
             gameState.onGame = false
             gameState.onMenu = true
             this.scene.start('gameOver')
