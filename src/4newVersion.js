@@ -11,9 +11,9 @@ var gameState = {
 
 var sessionID
 var gameId = generateUUID();
-
+var posted = false;
 var position = 'left';
-var game_version = 'v 0.2.6s';
+var game_version = 'v 0.2.7s';
 var physicsConfig = {
     default: 'matter',
     matter : {
@@ -35,7 +35,6 @@ window.onload = function(){
         },
         audio:{
             disableWebAudio: true,
-            noAudio: false
         } 
     }
 
