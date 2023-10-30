@@ -20,18 +20,7 @@ class ScenePause extends Phaser.Scene{
             }
     
             window?.parent.postMessage(gamePause, '*');
-        }
-        catch(er){
-            let gamePauseError = {
-                action: 'gamePauseError',
-                allGameSessionId: startGame.allGameSessionId,
-                gameSessionId: startGame.gameSessionId,
-                score: gameState.score,
-                timeStamp : Date.now()
-            }
-    
-            window?.parent.postMessage(gamePauseError, '*');
-        }
+
 
         this.pauseBg = this.add.image(game.config.width / 2, game.config.height / 2, 'pauseBg')
         this.pauseBg.setOrigin(0.5)
@@ -65,6 +54,18 @@ class ScenePause extends Phaser.Scene{
         }).setOrigin(0.5);
 
         this.versionText = this.add.text(game.config.width - 100, game.config.height - 40, `${game_version}`, { fontFamily:'Rubik-Medium', fontStyle:'bold', fontSize: '30px', fill: '#fff' }).setOrigin(0.5);
+    }
+    catch(er){
+        let gamePauseError = {
+            action: 'gamePauseError',
+            allGameSessionId: startGame.allGameSessionId,
+            gameSessionId: startGame.gameSessionId,
+            score: gameState.score,
+            timeStamp : Date.now()
+        }
+
+        window?.parent.postMessage(gamePauseError, '*');
+    }
     }
 
     loadScore(){
