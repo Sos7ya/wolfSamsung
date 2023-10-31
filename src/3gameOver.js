@@ -13,7 +13,7 @@ class GameOver extends Phaser.Scene{
             timeStamp : Date.now()
         }
 
-        window?.parent.postMessage(gameOver, '*');
+        window?.parent.postMessage(gameOver, parentOrigin);
 
         gameState.isOver = true
         gameState.onMenu = false
@@ -127,7 +127,7 @@ class GameOver extends Phaser.Scene{
 
         startGame.gameSessionId = generateUUID();
         startGame.allGameSessionId = sessionID;
-        window?.parent.postMessage(startGame, '*');
+        window?.parent.postMessage(startGame, parentOrigin);
 
         this.scene.start(playgame)
         this.scene.stop()
@@ -141,7 +141,7 @@ class GameOver extends Phaser.Scene{
                     timeStamp : Date.now()
                 }
         
-                window?.parent.postMessage(closeGameSession, '*');
+                window?.parent.postMessage(closeGameSession, parentOrigin);
                 posted = true;
             }
         }

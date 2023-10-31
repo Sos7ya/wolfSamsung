@@ -92,7 +92,7 @@ class MainMenu extends Phaser.Scene{
         gameState.onMenu = false
         startGame.gameSessionId = generateUUID();
         startGame.allGameSessionId = sessionID;
-        window?.parent.postMessage(startGame, '*');
+        window?.parent.postMessage(startGame, parentOrigin);
         this.scene.start('playgame');
 
 
@@ -106,7 +106,7 @@ class MainMenu extends Phaser.Scene{
                     timeStamp : Date.now()
                 }
         
-                window?.parent.postMessage(closeGameSession, '*');
+                window?.parent.postMessage(closeGameSession, parentOrigin);
                 posted = true;
             }
         }

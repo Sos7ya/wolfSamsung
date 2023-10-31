@@ -8,7 +8,7 @@ var gameState = {
     score: 0,
     lives: 3
 }
-
+var parentOrigin;
 var sessionID
 var gameId = generateUUID();
 var posted = false;
@@ -37,7 +37,13 @@ window.onload = function(){
             disableWebAudio: true,
         } 
     }
-
+    if(document.referrer){
+        parentOrigin = document.referrer
+        console.log(parentOrigin);
+    }
+    else{
+        parentOrigin = '*';
+    }
 
     sessionID = generateUUID();
     var startGameSession = {
@@ -45,7 +51,7 @@ window.onload = function(){
         allGameSessionId: sessionID,
         timeStamp: Date.now()
     }
-    window?.parent.postMessage(startGameSession, '*');
+    window?.parent.postMessage(startGameSession, parentOrigin);
 
 game = new Phaser.Game(config);
 }

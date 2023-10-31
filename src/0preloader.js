@@ -10,7 +10,7 @@ class Preloader extends Phaser.Scene{
                 allGameSessionId: sessionID,
                 timeStamp: Date.now()
             }
-            window?.parent.postMessage(startDownloading, '*');
+            window?.parent.postMessage(startDownloading, parentOrigin);
 
         this.loadText = this.add.text(game.config.width/2, game.config.height/2, 'Loading...',{fontFamily: 'DigitalNumbers'}).setAlpha(0)
 
@@ -115,7 +115,7 @@ class Preloader extends Phaser.Scene{
             allGameSessionId: sessionID,
             timeStamp: Date.now()
         }
-        window?.parent.postMessage(startDownloadingError, '*');
+        window?.parent.postMessage(startDownloadingError, parentOrigin);
     }
     }
 
@@ -126,7 +126,7 @@ class Preloader extends Phaser.Scene{
                 allGameSessionId: sessionID,
                 timeStamp: Date.now()
             }
-            window?.parent.postMessage(finishDownload, '*')
+            window?.parent.postMessage(finishDownload, parentOrigin)
         }
         catch(er){
             let downloadError = {
@@ -134,7 +134,7 @@ class Preloader extends Phaser.Scene{
                 allGameSessionId: sessionID,
                 timeStamp: Date.now()
             }
-            window?.parent.postMessage(downloadError, '*')
+            window?.parent.postMessage(downloadError, parentOrigin)
         }
         this.scene.start('mainmenu')
     }
