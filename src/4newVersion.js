@@ -21,6 +21,8 @@ var physicsConfig = {
     }
 }
 
+var posted = false;
+
 window.onload = function(){
     var config = {
         type: Phaser.CANVAS,
@@ -35,6 +37,7 @@ window.onload = function(){
         },
         audio:{
             disableWebAudio: true,
+            noAudio: true
         } 
     }
     if(document.referrer){
